@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { PinInput } from './components';
+
 
 function App() {
+  const [code, setCode] = useState('')
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Pin Input example</h1>
+      <PinInput
+        defaultValue='12'
+        // isSecretMode={true}
+        onSubmit={(value) => {
+          setCode(value)
+        }} />
+      <h2>Code: {code}</h2>
     </div>
   );
 }
