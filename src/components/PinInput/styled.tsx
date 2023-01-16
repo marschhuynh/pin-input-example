@@ -29,9 +29,8 @@ export const PinWrapper = styled.label`
 export const PinInputWrapper = styled.div`
     &:focus-within .number-item {
         border-color: #aaa;
-    }
-
-    .number-item.active {
-        border-color: #5c00ff63;
+        &.active {
+            border-color: #5c00ff63;
+        }
     }
 `

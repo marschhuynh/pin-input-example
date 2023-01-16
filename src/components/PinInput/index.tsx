@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { DEFAULT_PATTERN } from './const';
 import { HiddenInput, NumberItem, PinInputWrapper, PinWrapper } from './styled';
+import { regexValidate } from './utils';
 
 const NumberBox = (props: { value: string, isSecretMode?: boolean, isActive?: boolean }) => {
   const { value, isSecretMode = false, isActive } = props;
@@ -13,9 +15,11 @@ type PinInputProps = {
   onSubmit?: (value: string) => void;
   codeLength?: number;
   isSecretMode?: boolean
+  pattern?: string
 };
 
-export const PinInput = ({ isSecretMode, codeLength = 4, onSubmit, defaultValue }: PinInputProps) => {
+
+export const PinInput = ({ isSecretMode, codeLength = 4, onSubmit, defaultValue, pattern = DEFAULT_PATTERN }: PinInputProps) => {
   const [inputValue, setInputValue] = useState(defaultValue ?? "");
   const [inputValueArray, setInputValueArray] = useState<string[]>([]);
 
@@ -27,13 +31,18 @@ export const PinInput = ({ isSecretMode, codeLength = 4, onSubmit, defaultValue 
   }, [codeLength, inputValue, onSubmit]);
 
   const handleChange = (e: any) => {
-    if (e.target.value.length > codeLength) return
-    setInputValue(e.target.value);
+    const value = e.target.value
+    const lastChar = value[value.length - 1]
+    if (value.length > codeLength) return
+
+    if (!(regexValidate(pattern, lastChar) || !lastChar)) return
+    setInputValue(value);
+
   };
 
   return (
     <PinInputWrapper>
-      <HiddenInput id="code-input" onChange={handleChange} value={inputValue} />
+      <HiddenInput autoFocus id="code-input" onChange={handleChange} value={inputValue} />
       <PinWrapper htmlFor="code-input">
         {Array(codeLength).fill('0').map((value, index) => {
           return (

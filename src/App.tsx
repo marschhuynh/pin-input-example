@@ -10,7 +10,8 @@ function App() {
       <h1>Pin Input example</h1>
       <PinInput
         defaultValue='12'
-        // isSecretMode={true}
+        isSecretMode={true}
+        // pattern="[1-6]"
         onSubmit={(value) => {
           setCode(value)
         }} />
