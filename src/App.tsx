@@ -5,7 +5,7 @@ import { PinInput } from './components';
 const DemoComponent = ({
   isSecretMode = false,
   codeLength = 4,
-  pattern = '.',
+  charPattern = '.',
   title = 'Pin Input example'
 }) => {
   const [code, setCode] = useState('')
@@ -16,7 +16,7 @@ const DemoComponent = ({
         codeLength={codeLength}
         defaultValue='12'
         isSecretMode={isSecretMode}
-        pattern={pattern}
+        pattern={charPattern}
         onSubmit={(value) => {
           setCode(value)
         }} />
@@ -31,7 +31,7 @@ function App() {
       <DemoComponent title='Pin Input example - default' />
       <DemoComponent title='Pin Input example - secret mode' isSecretMode />
       <DemoComponent title='Pin Input example - code length' codeLength={6} />
-      <DemoComponent title='Pin Input example - only 1 to 6' pattern='[1-6]' />
+      <DemoComponent title='Pin Input example - only 1 to 6' charPattern='[1-6]' />
     </div>
   );
 }

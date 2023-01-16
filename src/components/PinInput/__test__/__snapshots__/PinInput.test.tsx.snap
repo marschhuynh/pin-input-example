@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PinInput matches snapshot with default value 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-hLBbgP cpoLxT"
+    >
+      <input
+        class="sc-gswNZR hMcZeN"
+        id=":r0:"
+        value="12"
+      />
+      <label
+        class="sc-dkrFOg hwNuws"
+        for=":r0:"
+      >
+        <div
+          class="sc-bcXHqe ckpZhT number-item"
+        >
+          1
+        </div>
+        <div
+          class="sc-bcXHqe ckpZhT number-item"
+        >
+          2
+        </div>
+        <div
+          class="sc-bcXHqe ckpZhT number-item active"
+        />
+        <div
+          class="sc-bcXHqe ckpZhT number-item"
+        />
+      </label>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`PinInput matches snapshot with secret mode 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-hLBbgP cpoLxT"
+    >
+      <input
+        class="sc-gswNZR hMcZeN"
+        id=":r1:"
+        value="12"
+      />
+      <label
+        class="sc-dkrFOg hwNuws"
+        for=":r1:"
+      >
+        <div
+          class="sc-bcXHqe ckpZhT number-item"
+        >
+          *
+        </div>
+        <div
+          class="sc-bcXHqe ckpZhT number-item"
+        >
+          *
+        </div>
+        <div
+          class="sc-bcXHqe ckpZhT number-item active"
+        />
+        <div
+          class="sc-bcXHqe ckpZhT number-item"
+        />
+      </label>
+    </div>
+  </div>
+</body>
+`;
