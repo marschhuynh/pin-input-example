@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { DEFAULT_PATTERN } from './const';
 import { HiddenInput, NumberItem, PinInputWrapper, PinWrapper } from './styled';
 import { regexValidate } from './utils';
@@ -22,6 +22,7 @@ type PinInputProps = {
 export const PinInput = ({ isSecretMode, codeLength = 4, onSubmit, defaultValue, pattern = DEFAULT_PATTERN }: PinInputProps) => {
   const [inputValue, setInputValue] = useState(defaultValue ?? "");
   const [inputValueArray, setInputValueArray] = useState<string[]>([]);
+  const inputId = useId()
 
   useEffect(() => {
     setInputValueArray(inputValue.split(""));
@@ -41,9 +42,9 @@ export const PinInput = ({ isSecretMode, codeLength = 4, onSubmit, defaultValue,
   };
 
   return (
-    <PinInputWrapper>
-      <HiddenInput autoFocus id="code-input" onChange={handleChange} value={inputValue} />
-      <PinWrapper htmlFor="code-input">
+    <PinInputWrapper className={codeLength === inputValue.length ? 'valid' : ''}>
+      <HiddenInput autoFocus id={inputId} onChange={handleChange} value={inputValue} />
+      <PinWrapper htmlFor={inputId}>
         {Array(codeLength).fill('0').map((value, index) => {
           return (
             <NumberBox key={index}

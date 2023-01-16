@@ -33,4 +33,8 @@ export const PinInputWrapper = styled.div`
             border-color: #5c00ff63;
         }
     }
+
+    &.valid .number-item {
+        border-color: #15bb15;
+    }
 `

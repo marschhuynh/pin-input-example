@@ -2,20 +2,36 @@ import './App.css';
 import { useState } from 'react';
 import { PinInput } from './components';
 
-
-function App() {
+const DemoComponent = ({
+  isSecretMode = false,
+  codeLength = 4,
+  pattern = '.',
+  title = 'Pin Input example'
+}) => {
   const [code, setCode] = useState('')
   return (
     <div className="App">
-      <h1>Pin Input example</h1>
+      <h1>{title}</h1>
       <PinInput
+        codeLength={codeLength}
         defaultValue='12'
-        isSecretMode={true}
-        // pattern="[1-6]"
+        isSecretMode={isSecretMode}
+        pattern={pattern}
         onSubmit={(value) => {
           setCode(value)
         }} />
       <h2>Code: {code}</h2>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="App">
+      <DemoComponent title='Pin Input example - default' />
+      <DemoComponent title='Pin Input example - secret mode' isSecretMode />
+      <DemoComponent title='Pin Input example - code length' codeLength={6} />
+      <DemoComponent title='Pin Input example - only 1 to 6' pattern='[1-6]' />
     </div>
   );
 }
